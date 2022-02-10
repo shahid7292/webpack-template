@@ -5,9 +5,30 @@ import React, { useState, useCallback } from "react";
 import { Button, Row, Col, Form, Label, FormGroup, Input } from "reactstrap";
 import "./LoginStyle.scss";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { isEmpty } from "lodash";
+import { toast } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
+import cookieServices from "../../Services/Cookies";
+import { useDispatch } from "react-redux";
+import { requestLogin } from "../../redux/actions/auth.actions";
 
 function Login() {
+  const dispatch = useDispatch();
   const [loginObj, setLoginObj] = useState({});
+  const navigate = useNavigate();
+  const loginCallback = (data) => {
+    cookieServices().setAppToken(data);
+    navigate("/app");
+  };
+  const handleLogin = () => {
+    if (isEmpty(email.toString())) {
+      toast.error("Email cannot be empty");
+    } else if (isEmpty(password.toString())) {
+      toast.error("Password cannot be empty");
+    } else {
+      dispatch(requestLogin({ email, password }, loginCallback));
+    }
+  };
   const { email = "", password = "" } = loginObj;
   const handleChange = (e) => {
     let updateObj = { ...loginObj };
@@ -24,8 +45,10 @@ function Login() {
     },
     [setPasswordShow, passwordShow]
   );
-  const getPassword = () =>
+  const getPassword = () => {
     passwordShow ? <AiFillEyeInvisible /> : <AiFillEye />;
+  };
+
   return (
     <>
       <div className="mainbg-img">
@@ -70,7 +93,13 @@ function Login() {
                   </Col>
                 </FormGroup>
                 <div className="forgot-pwd">Forgot password?</div>
-                <Button color="secondary" size="sm" type="submit" block>
+                <Button
+                  onClick={handleLogin}
+                  color="secondary"
+                  size="sm"
+                  type="submit"
+                  block
+                >
                   Submit
                 </Button>
               </Form>
@@ -80,7 +109,12 @@ function Login() {
             <div></div>
           </Col>
           <div>
-            <h6 className="link-reg">Don't have an account yet? Sign up</h6>
+            <h6 className="link-reg">
+              {" Don't have an account yet? Sign up"}
+              <Link to="/auth/register" className="signup-link">
+                {"Sign Up"}
+              </Link>
+            </h6>
           </div>
         </Row>
       </div>
