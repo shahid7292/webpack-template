@@ -7,16 +7,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./Layout/AuthLayout";
 import MainLayout from "./Layout/MainLayout";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import configureStore from "./redux/store";
 
 function App() {
+  const storeObject = configureStore();
+  const { store, persistor } = storeObject;
   return (
     <div>
-      <Routes>
-        <Route path="auth/*" element={<AuthLayout />} />
-        <Route path="app/*" element={<MainLayout />} />
-        <Route path="/" element={<Navigate to="auth/*" />} />
-        <Route path="*" replace element={<Navigate to="/auth/login" />} />
-      </Routes>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Routes>
+            <Route path="auth/*" element={<AuthLayout />} />
+            <Route path="app/*" element={<MainLayout />} />
+            <Route path="/" element={<Navigate to="auth/*" />} />
+            <Route path="*" replace element={<Navigate to="/auth/login" />} />
+          </Routes>
+        </PersistGate>
+      </Provider>
     </div>
   );
 }

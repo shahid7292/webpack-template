@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Row, Col, Form, Label, FormGroup, Input } from "reactstrap";
 import "./ForgetStyle.scss";
+import { Link } from "react-router-dom";
 
 function ForgetPwd() {
   return (
@@ -33,7 +34,9 @@ function ForgetPwd() {
                 </FormGroup>
 
                 <div>
-                  <h6 className="link-backToLogin">Back to login page</h6>
+                  <h6 className="link-backToLogin">
+                    Back to <Link to="/auth/login">Login</Link> page
+                  </h6>
                 </div>
                 <Button
                   color="secondary"

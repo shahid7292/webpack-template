@@ -20,6 +20,15 @@ function Login() {
     cookieServices().setAppToken(data);
     navigate("/app");
   };
+
+  const { email = "", password = "" } = loginObj;
+  const handleChange = (e) => {
+    let updateObj = { ...loginObj };
+    updateObj = Object.assign({}, updateObj, {
+      [e.target.name]: e.target.value,
+    });
+    setLoginObj(updateObj);
+  };
   const handleLogin = () => {
     if (isEmpty(email.toString())) {
       toast.error("Email cannot be empty");
@@ -28,14 +37,6 @@ function Login() {
     } else {
       dispatch(requestLogin({ email, password }, loginCallback));
     }
-  };
-  const { email = "", password = "" } = loginObj;
-  const handleChange = (e) => {
-    let updateObj = { ...loginObj };
-    updateObj = Object.assign({}, updateObj, {
-      [e.target.name]: e.target.value,
-    });
-    setLoginObj(updateObj);
   };
   const [passwordShow, setPasswordShow] = useState(false);
   const togglePasswordVisiblity = useCallback(
@@ -110,10 +111,8 @@ function Login() {
           </Col>
           <div>
             <h6 className="link-reg">
-              {" Don't have an account yet? Sign up"}
-              <Link to="/auth/register" className="signup-link">
-                {"Sign Up"}
-              </Link>
+              {" Don't have an account yet?"}
+              <Link to="/auth/register">{"Sign Up"}</Link>
             </h6>
           </div>
         </Row>
