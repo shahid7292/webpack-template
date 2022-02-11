@@ -38,10 +38,13 @@
     float: right;
     padding-bottom: 10px;
 }
-.link-reg {
+.link-login {
     position: absolute;
     padding: 8rem 0rem 0rem 11rem;
     font-weight: 200;
+    a {
+        text-decoration: none;
+    }
 }
 .label-size {
     font-size: 13px;
@@ -51,4 +54,10 @@
     font-size: 15px;
     line-height: 5px;
     font-weight: bold;
+}
+.eye-icon {
+    position: absolute;
+    margin-top: -24px;
+    margin-left: 175px;
+    display: flex;
 }

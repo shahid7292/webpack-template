@@ -1,14 +1,11 @@
 import React from "react";
-import "./app.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import Login from "./Views/Login/Login";
-//import Register from "./Views/Login/Register";
-//import ForgetPwd from "./Views/Login/ForgetPwd";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./Layout/AuthLayout";
 import MainLayout from "./Layout/MainLayout";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+import Toaster from "./Component/toaster/Toaster";
 import configureStore from "./redux/store";
 
 function App() {
@@ -17,6 +14,7 @@ function App() {
   return (
     <div>
       <Provider store={store}>
+        <Toaster />
         <PersistGate loading={null} persistor={persistor}>
           <Routes>
             <Route path="auth/*" element={<AuthLayout />} />

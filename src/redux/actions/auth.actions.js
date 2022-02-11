@@ -1,14 +1,14 @@
+/* eslint-disable import/namespace */
 import * as actions from "../action.constants";
 
-export const requestLogin = (data, callback) => ({
+export const requestLogin = (data, successCallback, errorCallback) => ({
   type: actions.REQUEST_LOGIN,
   payload: data,
-  callback,
+  successCallback,
+  errorCallback,
 });
 
-export const requestRegister = (data, callback) => ({
-  // eslint-disable-next-line import/namespace
-  type: actions.REQUEST_REGISTER,
+export const StoreProfile = (data) => ({
+  type: actions.STORE_PROFILE,
   payload: data,
-  callback,
 });

@@ -1,4 +1,3 @@
-import { Layouts } from "./Constants/enumConfig";
 import Home from "./Views/Home/HomePage";
 import AboutUs from "./Views/AboutUs/AboutUs";
 import Login from "./Views/Login/Login";
@@ -9,32 +8,37 @@ const routes = [
     path: "login",
     name: "Login",
     component: Login,
-    layout: Layouts.AUTH,
+    layout: "auth",
   },
   {
     path: "register",
     name: "Register",
     component: Register,
-    layout: Layouts.AUTH,
+    layout: "auth",
   },
   {
     path: "forgetPassword",
     name: "ForgetPwd",
     component: ForgetPwd,
-    layout: Layouts.AUTH,
+    layout: "auth",
   },
   {
-    path: "/",
+    path: "home",
     name: "Home",
     component: Home,
-    layout: Layouts.APP,
+    layout: "app",
+    showInSidebar: true,
   },
   {
-    path: "/aboutus",
+    path: "aboutus",
     name: "AboutUs",
     component: AboutUs,
-    layout: Layouts.APP,
+    layout: "app",
+    showInSidebar: true,
   },
 ];
 export const authRoutes = routes.filter((route) => route.layout === "auth");
 export const appRoutes = routes.filter((route) => route.layout === "app");
+export const sidebarRoutes = routes.filter(
+  (route) => route.layout === "app" && route.showInSidebar
+);

@@ -1,7 +1,14 @@
-import axios from "../../Services/axios";
 import { trackPromise } from "react-promise-tracker";
-import { getUrl } from "../urls";
 
-export const loginAsync = (payload) => {
-  return trackPromise(axios.post(getUrl("login"), payload));
+export const loginAsync = ({ email, password }) => {
+  const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (email === "demo@example.com" && password == "123@demo") {
+        resolve({ name: "demoUser" });
+      } else {
+        reject({ email, password });
+      }
+    }, 1000);
+  });
+  return trackPromise(myPromise);
 };

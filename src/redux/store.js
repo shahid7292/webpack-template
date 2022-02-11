@@ -1,7 +1,8 @@
 import { compose, createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
-import allSagas from "../redux/saga/root.saga";
+import AppReducers from "./reducers/root.reducers";
+import allSagas from "./saga/root.saga";
 
 import { persistStore, persistReducer } from "redux-persist";
 // Defaults to SessionStorage
@@ -16,7 +17,7 @@ const persistConfig = {
   storage: sessionStorage,
 };
 
-const persistedReducer = persistReducer(persistConfig);
+const persistedReducer = persistReducer(persistConfig, AppReducers);
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   middleWares.push(sagaMiddleware);

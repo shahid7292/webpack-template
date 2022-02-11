@@ -1,22 +1,20 @@
-import { call, takeLatest } from "redux-saga/effects";
+import { call, takeLatest, put } from "redux-saga/effects";
 import { loginAsync } from "../asyncActions/auth.async";
-import { toast } from "react-toastify";
+import { StoreProfile } from "../actions/auth.actions";
 import * as actions from "../action.constants";
 
-function* loginRequest(action = {}) {
-  const { payload = {}, callback = () => {}, fromRegister = false } = action;
+function* loginRequest(action) {
   try {
-    const response = yield call(loginAsync, payload);
+    const response = yield call(loginAsync, action.payload);
     if (response) {
-      if (!fromRegister) {
-        toast.success("Logged in successfully");
-      }
-      callback(response.data);
+      yield put(StoreProfile(response));
+      yield action.successCallback(response);
     }
   } catch (e) {
-    toast.error(e?.response?.data?.detail);
+    action.errorCallback(e);
   }
 }
+
 export function* authSaga() {
   yield takeLatest(actions.REQUEST_LOGIN, loginRequest);
 }

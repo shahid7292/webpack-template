@@ -1,16 +1,46 @@
 import React from "react";
-import HomePage from "../Views/Home/HomePage";
-import MainLayoutRoutes from "./MainLayoutRoutes";
+import { Route, Routes, Navigate } from "react-router-dom";
+import cookieService from "../Services/Cookies";
+import Sidebar from "../Component/Sidebar/Sidebar";
+import { appRoutes } from "../routes";
+
 function MainLayout() {
+  const isTokenAvailable = cookieService().isTokenAvailable();
   return (
-    <>
+    <div>
+      <Sidebar />
       <div>
-        <HomePage />
+        <Routes>
+          {appRoutes.map((route, index) => {
+            return (
+              <Route
+                exact
+                path={route.path}
+                element={
+                  isTokenAvailable ? (
+                    route.component()
+                  ) : (
+                    <Navigate to="/auth/login" />
+                  )
+                }
+                key={index}
+              />
+            );
+          })}
+          <Route
+            path="*"
+            replace
+            element={
+              isTokenAvailable ? (
+                <Navigate to="Home" />
+              ) : (
+                <Navigate to="/auth/login" />
+              )
+            }
+          />
+        </Routes>
       </div>
-      <div>
-        <MainLayoutRoutes />
-      </div>
-    </>
+    </div>
   );
 }
 

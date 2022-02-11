@@ -42,7 +42,16 @@
     position: absolute;
     padding: 1rem 0rem 0rem 9.5rem;
     font-weight: 200;
+    a {
+        text-decoration: none;
+    }
 }
 .label-size {
     font-size: 13px;
+}
+.eye-icon {
+    position: absolute;
+    margin-top: -26px;
+    margin-left: 175px;
+    display: flex;
 }
