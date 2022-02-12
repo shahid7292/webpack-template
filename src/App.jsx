@@ -17,10 +17,9 @@ function App() {
         <Toaster />
         <PersistGate loading={null} persistor={persistor}>
           <Routes>
-            <Route path="auth/*" element={<AuthLayout />} />
+            <Route path="/*" extact element={<AuthLayout />} />
             <Route path="app/*" element={<MainLayout />} />
-            <Route path="/" element={<Navigate to="auth/*" />} />
-            <Route path="*" replace element={<Navigate to="/auth/login" />} />
+            <Route path="*" replace element={<Navigate to="/login" />} />
           </Routes>
         </PersistGate>
       </Provider>

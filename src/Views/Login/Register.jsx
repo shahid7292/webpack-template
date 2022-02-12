@@ -71,7 +71,7 @@ function Register() {
               <div>
                 <h6 className="link-login">
                   Already a member?
-                  <Link to="/auth/login">{"Log In"}</Link>
+                  <Link to="/login">{"Log In"}</Link>
                 </h6>
               </div>
               <Button color="secondary" size="sm" block>

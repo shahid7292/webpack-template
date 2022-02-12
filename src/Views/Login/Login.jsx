@@ -85,7 +85,7 @@ function Login() {
                 </Col>
               </FormGroup>
               <div className="forgot-pwd">
-                <Link to="/auth/forgetPassword">Forgot password?</Link>
+                <Link to="/forgetPassword">Forgot password?</Link>
               </div>
               <Button onClick={handleLogin} color="secondary" size="sm" block>
                 Submit
@@ -98,7 +98,7 @@ function Login() {
           <div>
             <h6 className="link-reg">
               {" Don't have an account yet?"}
-              <Link to="/auth/register">{"Sign Up"}</Link>
+              <Link to="/register">{"Sign Up"}</Link>
             </h6>
           </div>
         </Row>

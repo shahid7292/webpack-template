@@ -19,11 +19,11 @@ function HomePage() {
     <>
       <div className="header">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Welcome!</NavbarBrand>
+          <NavbarBrand>Welcome!</NavbarBrand>
           <button
             onClick={() => {
               cookieService().clearToken();
-              navigate("/auth/login");
+              navigate("/login");
               toast.success("Logged Out");
             }}
           >

@@ -20,7 +20,7 @@ function MainLayout() {
                   isTokenAvailable ? (
                     route.component()
                   ) : (
-                    <Navigate to="/auth/login" />
+                    <Navigate to="/login" />
                   )
                 }
                 key={index}
@@ -32,9 +32,9 @@ function MainLayout() {
             replace
             element={
               isTokenAvailable ? (
-                <Navigate to="Home" />
+                <Navigate to="home" />
               ) : (
-                <Navigate to="/auth/login" />
+                <Navigate to="/login" />
               )
             }
           />
