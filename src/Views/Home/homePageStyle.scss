@@ -1,0 +1,16 @@
+.card-data {
+    position: fixed;
+    top: 100px;
+    left: 130px;
+    width: calc(100% - 130px);
+    padding: 3px 30px 0px 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.header {
+    position: fixed;
+    left: 130px;
+    width: calc(100% - 130px);
+    border-bottom: 1px solid;
+}

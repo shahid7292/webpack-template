@@ -1,0 +1,60 @@
+* {
+    font-family: Lucida Bright, Georgia, serif;
+}
+
+.mainbg-img {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(3 169 244 / 4%);
+}
+.title {
+    padding: 1rem 0rem 0.2rem 1rem;
+}
+
+.main-style {
+    width: 40rem;
+    margin: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    background-color: white;
+}
+.forgotpwd-box {
+    margin-top: 30px;
+    margin-left: 15px;
+}
+.side-img {
+    background-image: url("../../assert/loginImg/img3.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 245px;
+}
+.forgot-pwd {
+    font-size: 13px;
+    float: right;
+    padding-bottom: 10px;
+}
+.link-backToLogin {
+    position: absolute;
+    padding: 10rem 0rem 0rem 13rem;
+    font-weight: 200;
+    a {
+        text-decoration: none;
+    }
+}
+.label-size {
+    font-size: 13px;
+}
+.para {
+    padding-left: 0.9rem;
+    font-size: 13px;
+    line-height: 8px;
+    font-weight: bold;
+}
+.btn-pwd {
+    margin-top: 20px;
+}
